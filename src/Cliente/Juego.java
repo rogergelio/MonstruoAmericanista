@@ -86,7 +86,7 @@ public class Juego extends JFrame {
         contentPanel.add(panel);
 
         lblScore = new JLabel("Score: 0");
-        lblScore.setForeground(new Color(135, 206, 250));
+        lblScore.setForeground(new Color(142, 53, 171));
         lblScore.setHorizontalAlignment(SwingConstants.TRAILING);
         lblScore.setFont(new Font("Cambria", Font.BOLD, 14));
         lblScore.setBounds(423, 54, 144, 33);
@@ -94,8 +94,8 @@ public class Juego extends JFrame {
 
         lblTimeLeft = new JLabel(player.getPlayerId());
         lblTimeLeft.setHorizontalAlignment(SwingConstants.CENTER);
-        lblTimeLeft.setForeground(new Color(240, 128, 128));
-        lblTimeLeft.setFont(new Font("Cambria", Font.BOLD, 24));
+        lblTimeLeft.setForeground(new Color(203, 92, 230));
+        lblTimeLeft.setFont(new Font("Cambria", Font.BOLD, 30));
         lblTimeLeft.setBounds(232, 54, 144, 33);
         contentPanel.add(lblTimeLeft);
 
