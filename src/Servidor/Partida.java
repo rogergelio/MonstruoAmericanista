@@ -18,7 +18,7 @@ public class Partida {
     private int maxScore;
     private InetAddress group;
     private MulticastSocket socket;
-    private ArrayList<Jugador> players;
+    public ArrayList<Jugador> players;
     private MulticastSocket msocket = null;
     Random rand = new Random();
     private static String url = "tcp://192.168.1.18:61616";
@@ -93,25 +93,52 @@ public class Partida {
 
     }//sendMonster
     public boolean isNewPlayer(Jugador newPlayer){
+        System.out.println("Entró a isnewplayer");
         boolean resp;
         resp = true;
         Jugador player;
         String newId = newPlayer.getPlayerId();
-        for (int i = 0; i < players.size(); i++) {
+        for (int i = 1; i < players.size(); i++) {
             player = players.get(i);
+            System.out.println("Imprimió: "+player.getPlayerId());
+            System.out.println("vez " + i+" en el for");
             if (player.getPlayerId().equals(newId)) {
+                System.out.println("player id:" + player.getPlayerId());
+                System.out.println("new player id:" + newId);
                 resp = false;
             }
         }
         return resp;
     }
+
+    /*public void mantenPuntaje(Jugador newPlayer){
+        String newId=newPlayer.getPlayerId();
+        if(!isNewPlayer(newPlayer)){
+            for (int i = 1; i < players.size(); i++) {
+                Jugador player = players.get(i);
+                if (player.getPlayerId().equals(newId)) {
+                    newPlayer.setPlayerScore(player.getPlayerScore());
+                }
+            }
+        }
+
+    }*/
+
     public void updateScore(Jugador player1){
+        System.out.println("Entó a update");
         Jugador player2;
         for (int i = 0; i < players.size(); i++) {
             player2 = players.get(i);
             String player2ID = player2.getPlayerId();
             if (player1.getPlayerId().equals(player2ID)) {
-                player2.setPlayerScore(player1.getPlayerScore()+1);
+                System.out.println("Entró al if de update");
+                player2.setPlayerScore(player2.getPlayerScore()+1);
+                player1.setPlayerScore(player2.getPlayerScore());
+                System.out.println("Puntaje" + player2.getPlayerScore());
+                System.out.println("Jugador 1");
+                System.out.println(player1.toString());
+                System.out.println("Jugador 2");
+                System.out.println(player2.toString());
                 players.set(i,player2);
             }
         }

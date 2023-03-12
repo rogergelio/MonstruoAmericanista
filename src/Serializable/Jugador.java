@@ -21,4 +21,12 @@ public class Jugador implements Serializable {
     public void setPlayerScore(int playerScore) {
         this.playerScore = playerScore;
     }
+
+    @Override
+    public String toString() {
+        return "Jugador{" +
+                "playerId='" + playerId + '\'' +
+                ", playerScore=" + playerScore +
+                '}';
+    }
 }

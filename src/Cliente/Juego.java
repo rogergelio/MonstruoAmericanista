@@ -131,7 +131,7 @@ public class Juego extends JFrame {
                 this.player.setPlayerScore(score);
                 btnMonstruos[monstruoID].setIcon(monstruoInImgRedo);
                 tablero[monstruoID] = false;
-                lblScore.setText(String.valueOf(score));
+                lblScore.setText(String.valueOf(this.player.getPlayerScore()));
                 try {
                     out.writeObject(this.player);
                 } catch (Exception e) {

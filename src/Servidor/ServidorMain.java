@@ -31,6 +31,7 @@ public class ServidorMain {
         int maxScore = game.getMaxScore();
         //mientras nadie haya ganado, enviamos monstruos por multicast
         while(true){
+            System.out.println("Jugadores: " +  game.players.size());
             game.sendMonster();
             Thread.sleep(1000);
             //Checar si alguien ya gano
