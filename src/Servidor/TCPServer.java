@@ -50,18 +50,11 @@ class Connection2 extends Thread {
     public Connection2(Socket aClientSocket, Partida game) {
         try {
             clientSocket = aClientSocket;
-            MessageProducer messageProducer;
-            TextMessage textMessage;
             ActiveMQConnectionFactory connectionFactory = new ActiveMQConnectionFactory(url);
             Connection connection = connectionFactory.createConnection();
             connection.start();
 
             Session session = connection.createSession(false /*Transacter*/, Session.AUTO_ACKNOWLEDGE);
-            Destination destination = session.createTopic(subject);
-
-            messageProducer = session.createProducer(destination);
-            textMessage = session.createTextMessage();
-
             out = new ObjectOutputStream(clientSocket.getOutputStream());
             in = new ObjectInputStream(clientSocket.getInputStream());
             this.game = game;

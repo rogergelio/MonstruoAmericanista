@@ -43,7 +43,7 @@ public class Partida {
             e.printStackTrace();
         }
     }
-    public void GameOver() throws IOException, JMSException {
+    public void GameOver() throws JMSException {
         String myMessage = "_" + getPlayerMaxScore().getPlayerId();
         System.out.println("Jugador Ganador: " + myMessage);
         MessageProducer messageProducer;
@@ -73,7 +73,7 @@ public class Partida {
         }
         return maxPlayer;
     }
-    public void sendMonster() throws IOException, JMSException {
+    public void sendMonster() throws JMSException {
         MessageProducer messageProducer;
         TextMessage textMessage;
         ActiveMQConnectionFactory connectionFactory = new ActiveMQConnectionFactory(url);

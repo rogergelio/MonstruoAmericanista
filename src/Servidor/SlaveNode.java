@@ -13,7 +13,6 @@ public class SlaveNode implements LoginRMI {
     private String ip = "224.0.0.1";
     private int portTCP = 49152;
     private int portUDP = 49155;
-    private ArrayList<Jugador> jugadores;
     public SlaveNode() throws RemoteException {
         super();
     }//Constructor
