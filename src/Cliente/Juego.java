@@ -17,7 +17,7 @@ import org.apache.activemq.ActiveMQConnection;
 import org.apache.activemq.ActiveMQConnectionFactory;
 
 public class Juego extends JFrame {
-    private static String url = ActiveMQConnection.DEFAULT_BROKER_URL;
+    private static String url = "tcp://192.168.1.18:61616";
     private static String subject = "Monstruito_Americanista";
     public static JButton btnMonstruos[] = new JButton[16];
     public static boolean tablero[] = new boolean[16];

@@ -21,7 +21,7 @@ public class Partida {
     private ArrayList<Jugador> players;
     private MulticastSocket msocket = null;
     Random rand = new Random();
-    private static String url = ActiveMQConnection.DEFAULT_BROKER_URL;
+    private static String url = "tcp://192.168.1.18:61616";
     private static String subject = "Monstruito_Americanista"; // Topic Name. You can create any/many topic names as per your requirement.
     public Partida() throws JMSException {
     }

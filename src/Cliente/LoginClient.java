@@ -49,7 +49,7 @@ public class LoginClient extends JFrame{
         LoginClient myFrame = new LoginClient();
         System.setProperty("java.security.policy", "src/client/client.policy");
         try {
-            String serverAddress = "localhost";
+            String serverAddress = "192.168.1.18";
             String serviceName = "LoginRMI";
             Registry registry = LocateRegistry.getRegistry(serverAddress); // server's ip address args[0]
             login = (LoginRMI) registry.lookup(serviceName);
