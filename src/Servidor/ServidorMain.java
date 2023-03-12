@@ -3,9 +3,7 @@ package Servidor;
 import Serializable.Jugador;
 import javax.jms.JMSException;
 import java.io.IOException;
-import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
-import java.rmi.registry.Registry;
 
 public class ServidorMain {
     public static void main(String[] args) throws IOException, InterruptedException, JMSException {

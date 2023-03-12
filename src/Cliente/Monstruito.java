@@ -1,26 +1,17 @@
 package Cliente;
-
-import java.io.ByteArrayInputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.net.DatagramPacket;
-import java.net.MulticastSocket;
 import java.util.Random;
 import javax.jms.Connection;
-import javax.jms.ConnectionFactory;
 import javax.jms.Destination;
-import javax.jms.JMSException;
 import javax.jms.MessageConsumer;
 import javax.jms.Session;
 import javax.jms.TextMessage;
 import org.apache.activemq.ActiveMQConnection;
 import org.apache.activemq.ActiveMQConnectionFactory;
-import java.sql.SQLOutput;
 import static javax.swing.JOptionPane.showMessageDialog;
 
 public class Monstruito extends Thread {
     private static String url = ActiveMQConnection.DEFAULT_BROKER_URL;
-    private static String subject = "Monstruitos";
+    private static String subject = "Monstruito_Americanista";
     Random r = new Random();
     public Monstruito() {
         System.out.println("Entró");
@@ -28,7 +19,6 @@ public class Monstruito extends Thread {
     @Override
     public void run() {
         while (true) {
-            System.out.println("a");
             int topoID = -1;
             byte[] buffer = new byte[1000];
             while(true){

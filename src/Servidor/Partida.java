@@ -22,7 +22,7 @@ public class Partida {
     private MulticastSocket msocket = null;
     Random rand = new Random();
     private static String url = ActiveMQConnection.DEFAULT_BROKER_URL;
-    private static String subject = "Monstruitos"; // Topic Name. You can create any/many topic names as per your requirement.
+    private static String subject = "Monstruito_Americanista"; // Topic Name. You can create any/many topic names as per your requirement.
     public Partida() throws JMSException {
     }
     public int getMaxScore() {
