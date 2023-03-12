@@ -8,12 +8,10 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
-import java.util.concurrent.ScheduledExecutorService;
 import java.net.*;
 import javax.jms.Connection;
 import javax.jms.Destination;
 import javax.jms.JMSException;
-import javax.jms.MessageConsumer;
 import javax.jms.Session;
 import org.apache.activemq.ActiveMQConnection;
 import org.apache.activemq.ActiveMQConnectionFactory;
@@ -25,16 +23,13 @@ public class Juego extends JFrame {
     public static boolean tablero[] = new boolean[16];
     private JLabel lblScore;
     private JLabel lblTimeLeft;
-    private JButton btnSalir;
     private ImageIcon topoInImg = new ImageIcon(getClass().getResource("background.jpeg"));
     private ImageIcon topoOutImg = new ImageIcon(getClass().getResource("monstruito.jpeg"));
     private static Icon topoInImgRedo;
     private static Icon topoOutImgRedo;
     public static int score;
-    private final int duracion = 30;
     private final int topoWidth = 132;
     private final int topoHeight = 132;
-    private ScheduledExecutorService executor;
     private Jugador player;
     private InfoPorts info;
     private Socket socketTCP;
@@ -52,7 +47,6 @@ public class Juego extends JFrame {
         connection.start();
         Session session = connection.createSession(false /*Transacter*/, Session.AUTO_ACKNOWLEDGE);
         Destination destination = session.createTopic(subject);
-        MessageConsumer messageConsumer = session.createConsumer(destination);
 
         init();
         initConnection();
