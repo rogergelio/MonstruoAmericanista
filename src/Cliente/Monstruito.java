@@ -19,7 +19,7 @@ public class Monstruito extends Thread {
     @Override
     public void run() {
         while (true) {
-            int topoID = -1;
+            int monstruoID = -1;
             byte[] buffer = new byte[1000];
             while(true){
                 try {
@@ -30,17 +30,17 @@ public class Monstruito extends Thread {
                     Destination destination = session.createTopic(subject);
                     MessageConsumer messageConsumer = session.createConsumer(destination);
                     TextMessage messageIn = (TextMessage) messageConsumer.receive();
-                    if (topoID>=0) {
-                        Juego.limpiaTopo(topoID);
+                    if (monstruoID>=0) {
+                        Juego.limpiaMonstruo(monstruoID);
                     }
                     String msjRecibido = messageIn.getText();
                     System.out.println("Message: " + msjRecibido);
                     if(msjRecibido.charAt(0) != '_') {//No ha habido ganador
-                        topoID = Integer.parseInt(msjRecibido);
-                        if (topoID > 15) {
-                            topoID = r.nextInt(16);
+                        monstruoID = Integer.parseInt(msjRecibido);
+                        if (monstruoID > 15) {
+                            monstruoID = r.nextInt(16);
                         }
-                        Juego.creaTopo(topoID);
+                        Juego.creaMonstruo(monstruoID);
                     }
                     else {//Hubo ganador
                         Juego.score = 0;

@@ -19,23 +19,23 @@ import org.apache.activemq.ActiveMQConnectionFactory;
 public class Juego extends JFrame {
     private static String url = ActiveMQConnection.DEFAULT_BROKER_URL;
     private static String subject = "Monstruito_Americanista";
-    public static JButton btnTopos[] = new JButton[16];
+    public static JButton btnMonstruos[] = new JButton[16];
     public static boolean tablero[] = new boolean[16];
     private JLabel lblScore;
     private JLabel lblTimeLeft;
-    private ImageIcon topoInImg = new ImageIcon(getClass().getResource("background.jpeg"));
-    private ImageIcon topoOutImg = new ImageIcon(getClass().getResource("monstruito.jpeg"));
-    private static Icon topoInImgRedo;
-    private static Icon topoOutImgRedo;
+    private ImageIcon monstruoInImg = new ImageIcon(getClass().getResource("background.jpeg"));
+    private ImageIcon monstruoOutImg = new ImageIcon(getClass().getResource("monstruito.jpeg"));
+    private static Icon monstruoInImgRedo;
+    private static Icon monstruoOutImgRedo;
     public static int score;
-    private final int topoWidth = 132;
-    private final int topoHeight = 132;
+    private final int monstruoWidth = 132;
+    private final int monstruoHeight = 132;
     private Jugador player;
     private InfoPorts info;
     private Socket socketTCP;
     private ObjectOutputStream out;
     private boolean juegoIniciado = true;
-    private Monstruito topoHilo;
+    private Monstruito monstruoHilo;
 
     public Juego(Jugador player, InfoPorts info) throws IOException, JMSException {
         this.player = player;
@@ -52,8 +52,8 @@ public class Juego extends JFrame {
         initConnection();
         iniciaJuego();
 
-        topoHilo = new Monstruito();
-        topoHilo.start();
+        monstruoHilo = new Monstruito();
+        monstruoHilo.start();
     }
 
     public void init() {
@@ -85,17 +85,17 @@ public class Juego extends JFrame {
         lblTimeLeft.setBounds(232, 54, 144, 33);
         contentPanel.add(lblTimeLeft);
 
-        topoInImgRedo = resizeIcon(topoInImg, topoWidth, topoHeight);
-        topoOutImgRedo = resizeIcon(topoOutImg, topoWidth, topoHeight);
+        monstruoInImgRedo = resizeIcon(monstruoInImg, monstruoWidth, monstruoHeight);
+        monstruoOutImgRedo = resizeIcon(monstruoOutImg, monstruoWidth, monstruoHeight);
 
         for (int i = 0, x = 0, y = 396; i < 16; i++) {
-            btnTopos[i] = new JButton();
-            btnTopos[i].setName(String.valueOf(i));
-            btnTopos[i].setBounds(x, y, topoWidth, topoHeight);
-            panel.add(btnTopos[i]);
-            btnTopos[i].setIcon(topoInImgRedo);
-            x = (x + topoWidth) % 528;
-            y = x == 0 ? y - topoHeight : y;
+            btnMonstruos[i] = new JButton();
+            btnMonstruos[i].setName(String.valueOf(i));
+            btnMonstruos[i].setBounds(x, y, monstruoWidth, monstruoHeight);
+            panel.add(btnMonstruos[i]);
+            btnMonstruos[i].setIcon(monstruoInImgRedo);
+            x = (x + monstruoWidth) % 528;
+            y = x == 0 ? y - monstruoHeight : y;
             tablero[i] = false;
         }
         setContentPane(contentPanel);
@@ -118,19 +118,19 @@ public class Juego extends JFrame {
         return new ImageIcon(resizedImage);
     }
 
-    public static int creaTopo(int topoID) {
-        tablero[topoID] = true;
-        btnTopos[topoID].setIcon(topoOutImgRedo);
-        return topoID;
+    public static int creaMonstruo(int monstruoID) {
+        tablero[monstruoID] = true;
+        btnMonstruos[monstruoID].setIcon(monstruoOutImgRedo);
+        return monstruoID;
     }
 
-    private void clickTopo(int topoID) {
+    private void clickMonstruo(int monstruoID) {
         if (juegoIniciado) {
-            if (tablero[topoID]) {
+            if (tablero[monstruoID]) {
                 score++;
                 this.player.setPlayerScore(score);
-                btnTopos[topoID].setIcon(topoInImgRedo);
-                tablero[topoID] = false;
+                btnMonstruos[monstruoID].setIcon(monstruoInImgRedo);
+                tablero[monstruoID] = false;
                 lblScore.setText(String.valueOf(score));
                 try {
                     out.writeObject(this.player);
@@ -142,8 +142,8 @@ public class Juego extends JFrame {
     }
 
     private void iniciaJuego() {
-        for (JButton topo : btnTopos) {
-            topo.addMouseListener(new MouseListener() {
+        for (JButton monstruo : btnMonstruos) {
+            monstruo.addMouseListener(new MouseListener() {
                 @Override
                 public void mouseClicked(MouseEvent e) {
                     // TODO Auto-generated method stub
@@ -152,8 +152,8 @@ public class Juego extends JFrame {
                 @Override
                 public void mousePressed(MouseEvent e) {
                     JButton btn = (JButton) e.getSource();
-                    int topoID = Integer.parseInt(btn.getName());
-                    clickTopo(topoID);
+                    int monstruoID = Integer.parseInt(btn.getName());
+                    clickMonstruo(monstruoID);
                 }
 
                 @Override
@@ -174,9 +174,9 @@ public class Juego extends JFrame {
         }
     }
 
-    public static void limpiaTopo(int topoID) {
-        tablero[topoID] = false;
-        btnTopos[topoID].setIcon(topoInImgRedo);
+    public static void limpiaMonstruo(int monstruoID) {
+        tablero[monstruoID] = false;
+        btnMonstruos[monstruoID].setIcon(monstruoInImgRedo);
     }
 
 }
