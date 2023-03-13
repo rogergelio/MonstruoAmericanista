@@ -17,7 +17,7 @@ import org.apache.activemq.ActiveMQConnection;
 import org.apache.activemq.ActiveMQConnectionFactory;
 
 public class Juego extends JFrame {
-    private static String url = "tcp://192.168.1.18:61616";
+    private static String url = "tcp://10.10.23.244:61616";
     private static String subject = "Monstruito_Americanista";
     public static JButton btnMonstruos[] = new JButton[16];
     public static boolean tablero[] = new boolean[16];
@@ -105,7 +105,7 @@ public class Juego extends JFrame {
         try {
             String serverIP = this.info.getDirIP();
             int serverPort = this.info.getPortTCP();
-            socketTCP = new Socket("localhost", 49152);
+            socketTCP = new Socket("10.10.23.244", 49152);
             out = new ObjectOutputStream(socketTCP.getOutputStream());
         } catch (Exception e) {
             System.out.println(e.getMessage());

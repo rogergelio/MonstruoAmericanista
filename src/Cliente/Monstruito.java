@@ -10,7 +10,7 @@ import org.apache.activemq.ActiveMQConnectionFactory;
 import static javax.swing.JOptionPane.showMessageDialog;
 
 public class Monstruito extends Thread {
-    private static String url = "tcp://192.168.1.18:61616";
+    private static String url = "tcp://10.10.23.244:61616";
     private static String subject = "Monstruito_Americanista";
     Random r = new Random();
     public Monstruito() {

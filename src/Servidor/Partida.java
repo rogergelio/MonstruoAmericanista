@@ -21,7 +21,7 @@ public class Partida {
     public ArrayList<Jugador> players;
     private MulticastSocket msocket = null;
     Random rand = new Random();
-    private static String url = "tcp://192.168.1.18:61616";
+    private static String url = "tcp://10.10.23.244:61616";
     private static String subject = "Monstruito_Americanista"; // Topic Name. You can create any/many topic names as per your requirement.
     public Partida() throws JMSException {
     }

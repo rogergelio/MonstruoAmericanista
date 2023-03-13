@@ -10,7 +10,7 @@ public class ServidorMain {
         System.setProperty("java.security.policy", "src/Server/server.policy");
         //Desplegar servicio RMI
         try {
-            String serverAddress = "192.168.1.18";
+            String serverAddress = "10.10.23.244";
             System.setProperty("java.rmi.server.hostname", serverAddress);
             // start the rmi registry
             LocateRegistry.createRegistry(1099);   /// default port
